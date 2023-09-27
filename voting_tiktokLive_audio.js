@@ -4,25 +4,26 @@ const PORT = 3000;
 const { exec } = require('child_process');
 const { WebcastPushConnection } = require('tiktok-live-connector');
 
-let tiktokUsername = "ronaldinhososiaoficial";
+let tiktokUsername = "hypegames.oficial"; // Nome do usuário fazendo transmissão ao vivo (LIVE)
 let tiktokLiveConnection = new WebcastPushConnection(tiktokUsername);
 
 // Mapeamento dos presentes para times e pontos
+// Lista de presentes https://streamdps.com/tiktok-widgets/gifts/?br=1
 const giftToTeamMap = {
     '5655': { team: 'Flamengo', points: 100, giftAudio: './audio/hino-flamengo.mp3', commentAudio: './audio/flamengo.mp3' }, //Rosa
-    '7812': { team: 'Vasco', points: 100, giftAudio: './audio/audio.mp3', commentAudio: './audio/vasco.mp3' }, //Brabo
-    '7096': { team: 'Fluminense', points: 100, giftAudio: './audio/audio.mp3', commentAudio: './audio/fluminense.mp3' },
-    '5630': { team: 'Botafogo', points: 100, giftAudio: './audio/audio.mp3', commentAudio: './audio/botafogo.mp3' },
-    '8239': { team: 'São Paulo', points: 100, giftAudio: './audio/audio.mp3', commentAudio: './audio/saopaulo.mp3' },
-    '7934': { team: 'Corinthians', points: 100, giftAudio: './audio/audio.mp3', commentAudio: './audio/corinthians.mp3' }, // Heart-me
+    '7812': { team: 'Vasco', points: 100, giftAudio: './audio/hino-vasco.mp3', commentAudio: './audio/vasco.mp3' }, //Brabo
+    '7096': { team: 'Fluminense', points: 100, giftAudio: './audio/hino-fluminense.mp3', commentAudio: './audio/fluminense.mp3' },
+    '5630': { team: 'Botafogo', points: 100, giftAudio: './audio/hino-botafogo.mp3', commentAudio: './audio/botafogo.mp3' },
+    '8239': { team: 'São Paulo', points: 100, giftAudio: './audio/hino-saopaulo.mp3', commentAudio: './audio/saopaulo.mp3' },
+    '7934': { team: 'Corinthians', points: 100, giftAudio: './audio/hino-corinthians.mp3', commentAudio: './audio/corinthians.mp3' }, // Heart-me
 
     //Presentes +300 pontos
     '5879': { team: 'Flamengo', points: 300, giftAudio: './audio/hino-flamengo.mp3', commentAudio: './audio/flamengo.mp3' }, //Rosquinha
-    '5780': { team: 'Vasco', points: 300, giftAudio: './audio/audio.mp3', commentAudio: './audio/vasco.mp3' }, // Buquê
-    '5740': { team: 'Fluminense', points: 300, giftAudio: './audio/audio.mp3', commentAudio: './audio/fluminense.mp3' }, // Headphone
-    '5657': { team: 'Botafogo', points: 300, giftAudio: './audio/audio.mp3', commentAudio: './audio/botafogo.mp3' }, // Pirulito
-    '5919': { team: 'São Paulo', points: 300, giftAudio: './audio/audio.mp3', commentAudio: './audio/saopaulo.mp3' }, // LoveYou
-    '5658': { team: 'Corinthians', points: 300, giftAudio: './audio/audio.mp3', commentAudio: './audio/corinthians.mp3' }, // Perfume
+    '5780': { team: 'Vasco', points: 300, giftAudio: './audio/hino-vasco.mp3', commentAudio: './audio/vasco.mp3' }, // Buquê
+    '5740': { team: 'Fluminense', points: 300, giftAudio: './audio/hino-fluminense.mp3', commentAudio: './audio/fluminense.mp3' }, // Headphone
+    '5657': { team: 'Botafogo', points: 300, giftAudio: './audio/hino-botafogo.mp3', commentAudio: './audio/botafogo.mp3' }, // Pirulito
+    '5919': { team: 'São Paulo', points: 300, giftAudio: './audio/hino-saopaulo.mp3', commentAudio: './audio/saopaulo.mp3' }, // LoveYou
+    '5658': { team: 'Corinthians', points: 300, giftAudio: './audio/hino-corinthians.mp3', commentAudio: './audio/corinthians.mp3' }, // Perfume
     // Adicione outros presentes conforme necessário
 };
 
@@ -36,7 +37,8 @@ const teamPoints = {
     // Inicialize outros times aqui
 };
 
-const RESET_GIFT_ID = '6104';
+// Presente que reseta a votação
+const RESET_GIFT_ID = '6104'; // Chapéu
 
 let lastAudioPlayTimestamp = 0;
 
